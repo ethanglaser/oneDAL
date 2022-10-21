@@ -66,6 +66,21 @@ using voting_t = ::oneapi::dal::knn::voting_mode;
 using daal_distance_t = daal::algorithms::internal::PairwiseDistanceType;
 
 template <typename Task>
+struct task_to_response_map {
+    using type = int;
+};
+
+template <>
+struct task_to_response_map<task::regression> {
+    using type = float;
+};
+
+template <>
+struct task_to_response_map<task::classification> {
+    using type = std::int32_t;
+};
+
+template <typename Task>
 using response_t = typename task_to_response_map<Task>::type;
 
 template <typename Float, typename Task>
