@@ -20,16 +20,6 @@
 
 namespace oneapi::dal::knn::backend {
 
-using dst_t = Float;
-using idx_t = std::int32_t;
-using res_t = response_t<Task>;
-using comm_t = bk::communicator<spmd::device_memory_access::usm>;
-
-using uniform_voting_t = std::unique_ptr<pr::uniform_voting<res_t>>;
-using distance_voting_t = std::unique_ptr<pr::distance_voting<dst_t>>;
-using uniform_regression_t = std::unique_ptr<pr::uniform_regression<res_t>>;
-using distance_regression_t = std::unique_ptr<pr::distance_regression<dst_t>>;
-
 knn_callback<Float, Task>::knn_callback(sycl::queue& q,
                 comm_t c,
                 result_option_id results,
