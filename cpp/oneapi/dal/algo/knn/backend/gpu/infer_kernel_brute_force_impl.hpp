@@ -65,6 +65,9 @@ using voting_t = ::oneapi::dal::knn::voting_mode;
 
 using daal_distance_t = daal::algorithms::internal::PairwiseDistanceType;
 
+template <typename Task>
+using response_t = typename task_to_response_map<Task>::type;
+
 template <typename Float, typename Task>
 class knn_callback {
     using dst_t = Float;
