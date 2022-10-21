@@ -85,6 +85,9 @@ using response_t = typename task_to_response_map<Task>::type;
 
 template <typename Float, typename Task>
 class knn_callback {
+    using Float = std::tuple_element_t<0, TestType>;
+    using Method = std::tuple_element_t<1, TestType>;
+    using Task = std::tuple_element_t<2, TestType>;
     using dst_t = Float;
     using idx_t = std::int32_t;
     using res_t = response_t<Task>;
