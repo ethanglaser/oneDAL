@@ -17,10 +17,6 @@
 #include "oneapi/dal/algo/knn/backend/gpu/infer_kernel_brute_force_impl.hpp"
 #include "oneapi/dal/algo/knn/backend/gpu/infer_kernel.hpp"
 
-#include "oneapi/dal/algo/knn/backend/model_conversion.hpp"
-#include "oneapi/dal/algo/knn/backend/distance_impl.hpp"
-#include "oneapi/dal/algo/knn/backend/model_impl.hpp"
-
 namespace oneapi::dal::knn::backend {
 
 using idx_t = std::int32_t;
