@@ -14,28 +14,7 @@
 * limitations under the License.
 *******************************************************************************/
 
-#include "oneapi/dal/backend/interop/common_dpc.hpp"
-#include "oneapi/dal/backend/interop/error_converter.hpp"
-#include "oneapi/dal/backend/interop/table_conversion.hpp"
-
-#include "oneapi/dal/algo/knn/backend/model_conversion.hpp"
-#include "oneapi/dal/algo/knn/backend/gpu/infer_kernel.hpp"
-#include "oneapi/dal/algo/knn/backend/distance_impl.hpp"
-#include "oneapi/dal/algo/knn/backend/model_impl.hpp"
-
-#include "oneapi/dal/backend/primitives/common.hpp"
-#include "oneapi/dal/backend/primitives/ndarray.hpp"
-#include "oneapi/dal/backend/primitives/regression.hpp"
-#include "oneapi/dal/backend/primitives/search.hpp"
-#include "oneapi/dal/backend/primitives/selection.hpp"
-#include "oneapi/dal/backend/primitives/voting.hpp"
-#include "oneapi/dal/backend/primitives/utils.hpp"
-
-#include "oneapi/dal/backend/communicator.hpp"
-
-#include "oneapi/dal/table/row_accessor.hpp"
-
-#include "oneapi/dal/detail/common.hpp"
+#include "oneapi/dal/algo/knn/backend/gpu/infer_kernel_brute_force_impl.hpp"
 
 namespace oneapi::dal::knn::backend {
 
@@ -47,11 +26,6 @@ template <typename Task>
 using descriptor_t = detail::descriptor_base<Task>;
 
 using voting_t = ::oneapi::dal::knn::voting_mode;
-
-namespace de = ::oneapi::dal::detail;
-namespace bk = ::oneapi::dal::backend;
-namespace pr = ::oneapi::dal::backend::primitives;
-namespace spmd = oneapi::dal::preview::spmd;
 
 using daal_distance_t = daal::algorithms::internal::PairwiseDistanceType;
 
