@@ -36,6 +36,7 @@
 #include "oneapi/dal/table/row_accessor.hpp"
 
 #include "oneapi/dal/detail/common.hpp"
+#include "oneapi/dal/backend/primitives/debug.hpp"
 
 namespace oneapi::dal::knn::backend {
 
@@ -200,6 +201,13 @@ static infer_result<Task> kernel(const descriptor_t<Task>& desc,
                   wrapped_responses)
             .wait_and_throw();
     }
+
+    std::cout << "type RESPONSES " << typeid(Float).name() << " " << comm.get_rank() << std::endl;
+    std::cout << pr::ndarray<res_t, 1>::wrap(wrapped_responses.get_mutable_data(), {wrapped_responses.get_count()}).to_host(queue) << std::endl;
+    std::cout << "type DISTANCES " << typeid(Float).name() << " " << comm.get_rank() <<  std::endl;
+    std::cout << pr::ndarray<Float, 2>::wrap(wrapped_distances.get_mutable_data(), wrapped_distances.get_shape()).to_host(queue) << std::endl;
+    std::cout << "type INDICES " << typeid(Float).name() << " " << comm.get_rank() <<  std::endl;
+    std::cout << pr::ndarray<idx_t, 2>::wrap(wrapped_indices.get_mutable_data(), wrapped_indices.get_shape()).to_host(queue) << std::endl;
 
     auto result = infer_result<Task>{}.set_result_options(desc.get_result_options());
 
