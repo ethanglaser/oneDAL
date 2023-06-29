@@ -17,6 +17,7 @@
 #include "oneapi/dal/detail/profiler.hpp"
 #include "oneapi/dal/backend/primitives/blas/gemv.hpp"
 #include "oneapi/dal/backend/primitives/blas/misc.hpp"
+#include "oneapi/dal/backend/primitives/element_wise.hpp"
 
 #include <mkl_dal_sycl.hpp>
 
@@ -24,6 +25,28 @@ namespace oneapi::dal::backend::primitives {
 
 template <typename Float, ndorder ao>
 sycl::event gemv(sycl::queue& queue,
+                 const ndview<Float, 2, ao>& a,
+                 const ndview<Float, 1>& x,
+                 ndview<Float, 1>& y,
+                 Float alpha,
+                 Float beta,
+                 const event_vector& deps) {
+    auto temp_y = ndarray<Float, 1>::empty(queue, { y.get_count() }, sycl::usm::alloc::device);
+
+    auto gemv_nobeta_event = mkl_gemv(queue, a, x, temp_y, alpha, Float(0), deps);
+
+    const Float regul_factor = beta;
+
+    const auto kernel_regul = [=](const Float alphax_val, const Float y_val) {
+        return alphax_val + y_val * regul_factor;
+    };
+
+    return element_wise(queue, kernel_regul, temp_y, y, y, { gemv_nobeta_event });
+
+}
+
+template <typename Float, ndorder ao>
+sycl::event mkl_gemv(sycl::queue& queue,
                  const ndview<Float, 2, ao>& a,
                  const ndview<Float, 1>& x,
                  ndview<Float, 1>& y,
