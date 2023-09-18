@@ -227,7 +227,7 @@ public:
         dst_t pbuff_dst[pbuff_size] = { dst_default };
         idx_t pbuff_ids[pbuff_size] = { idx_default };
         std::int32_t pbuff_count, prev_count;
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
         sel_t* const heaps =
             heaps_.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else

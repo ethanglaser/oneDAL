@@ -823,7 +823,7 @@ compute_kernel_dense_impl<Float, List>::merge_blocks(local_buffer_list<Float, Li
             const std::int64_t local_size = item.get_local_range()[0];
             const std::int64_t id = item.get_local_id()[0];
             const std::int64_t group_id = item.get_group().get_group_id(0);
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             std::int64_t* lrc_ptr =
                 lrc_buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
             Float* lmin_ptr =

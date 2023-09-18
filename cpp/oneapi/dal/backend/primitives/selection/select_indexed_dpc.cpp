@@ -102,7 +102,7 @@ sycl::event select_indexed_local(sycl::queue& q,
                                         ? (bid + 1) * block
                                         : src_count;
             sycl::global_ptr<const Type> global((const Type*)(src_ptr + from));
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             sycl::local_ptr<const Type> local(
                 (const Type*)(cache.template get_multi_ptr<sycl::access::decorated::yes>()
                                   .get_raw()));

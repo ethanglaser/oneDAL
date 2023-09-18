@@ -901,7 +901,7 @@ sycl::event train_kernel_hist_impl<Float, Bin, Index, Task>::compute_initial_his
             const Index* node_tree_order_ptr = &tree_order_ptr[row_offset];
 
             hist_type_t* local_buf_ptr = nullptr;
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             local_buf_ptr =
                 local_buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else
@@ -981,7 +981,7 @@ sycl::event train_kernel_hist_impl<Float, Bin, Index, Task>::compute_initial_sum
             const Index row_count = node_ptr[impl_const_t::ind_lrc];
 
             const Index* node_tree_order_ptr = &tree_order_ptr[row_offset];
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             Float* local_buf_ptr =
                 local_buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else
@@ -1060,7 +1060,7 @@ sycl::event train_kernel_hist_impl<Float, Bin, Index, Task>::compute_initial_sum
             const Index* node_tree_order_ptr = &tree_order_ptr[row_offset];
 
             const Float mean = sum_list_ptr[node_id] / global_row_count;
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             Float* local_buf_ptr =
                 local_buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else
@@ -2196,7 +2196,7 @@ sycl::event train_kernel_hist_impl<Float, Bin, Index, Task>::reduce_partial_hist
             const Index bin_id = item.get_global_id()[0];
             const Index local_id = item.get_local_id()[1];
             const Index local_size = item.get_local_range()[1];
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             hist_type_t* buf_ptr =
                 buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else
@@ -2278,7 +2278,7 @@ sycl::event train_kernel_hist_impl<Float, Bin, Index, Task>::sum_reduce_partial_
             const Index bin_id = item.get_global_id()[0];
             const Index local_id = item.get_local_id()[1];
             const Index local_size = item.get_local_range()[1];
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             Float* buf_ptr = buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else
             Float* buf_ptr = buf.get_pointer().get();

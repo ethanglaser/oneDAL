@@ -644,7 +644,7 @@ train_splitter_impl<Float, Bin, Index, Task, use_private_mem>::compute_random_sp
             Index bs_ftr_bin = impl_const_t::leaf_mark_;
             Index bs_ftr_id = impl_const_t::leaf_mark_;
             Index bs_left_count = 0;
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             hist_type_t* local_hist_buf_ptr =
                 local_hist_buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else
@@ -934,7 +934,7 @@ train_splitter_impl<Float, Bin, Index, Task, use_private_mem>::compute_best_spli
             Index bs_ftr_id = impl_const_t::leaf_mark_;
             Index bs_left_count = 0;
 
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             hist_type_t* local_hist_buf_ptr =
                 local_hist_buf.template get_multi_ptr<sycl::access::decorated::yes>().get_raw();
 #else

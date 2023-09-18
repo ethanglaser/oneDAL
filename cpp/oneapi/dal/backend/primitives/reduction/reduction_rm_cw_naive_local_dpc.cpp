@@ -47,7 +47,7 @@ public:
         const auto loc_idx = it.get_local_id(1);
         const auto range = it.get_local_range(1);
         const auto lm = cache_.size();
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
         sycl::local_ptr<const Float> local(
             (const Float*)cache_.template get_multi_ptr<sycl::access::decorated::yes>().get_raw());
 #else
@@ -62,7 +62,7 @@ public:
             sycl::global_ptr<const Float> global(from);
             const auto count =
                 sycl::min(static_cast<std::int32_t>(lm), static_cast<std::int32_t>(height_ - j));
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             it.async_work_group_copy(
                   cache_.template get_multi_ptr<sycl::access::decorated::yes>(),
                   sycl::address_space_cast<sycl::access::address_space::global_space,

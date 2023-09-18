@@ -166,7 +166,7 @@ sycl::event solve_smo(sycl::queue& q,
 
             std::int32_t b_i = 0;
             std::int32_t b_j = 0;
-#if __SYCL_COMPILER_VERSION >= 20230828
+#if __SYCL_COMPILER_VERSION >= 20990828
             Float* local_kernel_values_ptr =
                 local_kernel_values.template get_multi_ptr<sycl::access::decorated::yes>()
                     .get_raw();
