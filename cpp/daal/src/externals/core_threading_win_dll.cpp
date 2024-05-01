@@ -58,7 +58,7 @@ static void load_daal_thr_dll(void)
         daal_thr_dll_handle = load_onedal_thread_dll();
         if (daal_thr_dll_handle == NULL)
         {
-            printf("Intel oneDAL FATAL ERROR: Cannot load onedal_thread.2.dll.\n");
+            printf("Intel oneDAL FATAL ERROR: Cannot load onedal_thread.2.dll multithreaded.\n");
             exit(1);
         }
         break;
@@ -71,7 +71,7 @@ static void load_daal_thr_dll(void)
             return;
         }
 
-        printf("Intel oneDAL FATAL ERROR: Cannot load onedal_thread.2.dll.\n");
+        printf("Intel oneDAL FATAL ERROR: Cannot load onedal_thread.2.dll default.\n");
         exit(1);
     }
     }
