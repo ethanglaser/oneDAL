@@ -19,3 +19,22 @@ repos:
     rev: v20.1.8
     hooks:
       - id: clang-format
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: trailing-whitespace
+        args: ["--markdown-linebreak-ext=md"]
+        exclude: &verbatim \.(csv|patch)$|^(LICENSE|third-party-programs\.txt|samples/daal/cpp/mpi/license\.txt)$|^docs/doxygen/
+      - id: end-of-file-fixer
+        exclude: *verbatim
+      - id: mixed-line-ending
+      - id: check-yaml
+        # Jinja-templated
+        exclude: ^conda-recipe/meta\.yaml$
+  - repo: local
+    hooks:
+      - id: ascii-only
+        name: ASCII-only source
+        language: pygrep
+        entry: '[^\x00-\x7F]'
+        types_or: [c, c++, shell, batch, yaml, toml, python]
