@@ -1187,7 +1187,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/blas.hpp\"
-        
+
         int main()
         {
             sycl::queue q;
@@ -1201,7 +1201,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/lapack.hpp\"
-        
+
         int main()
         {
             sycl::queue q;
@@ -1216,7 +1216,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/dft.hpp\"
-        
+
         int main()
         {
             namespace dft = oneapi::mkl::dft;
@@ -1231,7 +1231,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/spblas.hpp\"
-        
+
         int main()
         {
             sycl::queue q;
@@ -1246,7 +1246,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/experimental/data_fitting.hpp\"
-        
+
         int main()
         {
             namespace df = oneapi::mkl::experimental::data_fitting;
@@ -1260,7 +1260,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/rng.hpp\"
-        
+
         int main()
         {
             sycl::queue q;
@@ -1273,7 +1273,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/stats.hpp\"
-        
+
         int main()
         {
             namespace stats = oneapi::mkl::stats;
@@ -1288,7 +1288,7 @@ if(ENABLE_TRY_SYCL_COMPILE AND "CXX" IN_LIST CURR_LANGS AND SYCL_COMPILER AND MK
       check_cxx_source_compiles("
         #include <sycl/sycl.hpp>
         #include \"oneapi/mkl/vm.hpp\"
-        
+
         int main()
         {
             sycl::queue q;

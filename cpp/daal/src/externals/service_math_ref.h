@@ -33,7 +33,7 @@
         #include <arm_sve.h>
         #define R_LN2f 1.4426950408889634f       // log2(e)
         #define L2Uf   0.693145751953125f        // high part of ln(2)
-        #define L2Lf   1.428606765330187045e-06f //  low part of ln(2); L2Uf+L2Lf ≈ ln(2)
+        #define L2Lf   1.428606765330187045e-06f //  low part of ln(2); L2Uf+L2Lf ~= ln(2)
     #endif
 #endif
 

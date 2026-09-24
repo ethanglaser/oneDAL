@@ -96,7 +96,7 @@ jobs:
 
       - name: System Info
         run: .ci/scripts/describe_system.sh
-  
+
       - name: make daal
         run: |
           .ci/scripts/build.sh --compiler ${{ matrix.os.cxx }} --optimizations sve --target daal --backend-config ref --tbb-dir $TBBROOT --blas-dir ./__deps/openblas_aarch64
@@ -271,7 +271,7 @@ jobs:
           set -euo pipefail
           # enable_thread_pinning hangs on AArch64; the Make lanes above work
           # around the same example with a `timeout`. (CMake's ref-backend
-          # brownboost exclusion has no Bazel counterpart — the boosting
+          # brownboost exclusion has no Bazel counterpart - the boosting
           # examples are not wired into the Bazel build.)
           excludes=(
             -//examples/daal/cpp:enable_thread_pinning_host

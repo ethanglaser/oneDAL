@@ -33,4 +33,3 @@
 
 - [ ] **Toolchain code unification.** There is logic duplication for toolchain
   configuration on Linux/Windows.
-

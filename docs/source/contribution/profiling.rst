@@ -26,13 +26,13 @@ You can get an application to print this information to a standard output
 device by enabling **Intel® oneAPI Data Analytics Library Verbose Mode**.
 All logs are printed to the `stderr` stream.
 
-When Verbose mode is active in oneDAL, every call of a verbose-enabled function finishes with 
-printing a human-readable line describing the call. Even if the application gets terminated during 
-the function call, information for that function will be printed. 
+When Verbose mode is active in oneDAL, every call of a verbose-enabled function finishes with
+printing a human-readable line describing the call. Even if the application gets terminated during
+the function call, information for that function will be printed.
 The first call to a verbose-enabled function also prints a version information line.
 The analyzer becomes available only at the end of the oneDAL workflow, when static objects are destroyed.
 
-For GPU applications, additional information (one or more GPU information lines) will also 
+For GPU applications, additional information (one or more GPU information lines) will also
 be printed on the first call to a verbose-enabled function, following the version information lines printed
 for the host CPU.
 
@@ -141,6 +141,6 @@ The Analyzer helps visualize nested kernel calls and their contribution to the t
 General Notes on Verbose Mode
 -----------------------------
 
-Important: This means that the analyzer will not work properly in interactive environments like Jupyter Notebooks, 
+Important: This means that the analyzer will not work properly in interactive environments like Jupyter Notebooks,
 where the application may not fully terminate and static object destructors may never be called.
 To use the analyzer, run your application as a standalone script.

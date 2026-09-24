@@ -22,7 +22,7 @@ source mpivars.sh`
 
 Check the documentation that comes with your MPI implementation for implementation-specific details of linking.
 
-### Setting Up the Build Environment 
+### Setting Up the Build Environment
 Before you build the sample, you must set certain environment variables that define the location of related libraries. oneDAL includes the `vars` scripts that you can run to set environment variables:
 
 - On Windows\*, you can find the `vars.bat` batch file at `<install-dir>\compilers_and_libraries_xxxx.x.xxx\windows\daal\bin\:
@@ -72,7 +72,7 @@ The command creates a directory for the chosen library extension (`a` or `so`). 
 To run oneDAL MPI C++ samples, go to the C++ MPI samples directory and execute the `make` command in the run mode. For example, if you run the `vars` script with the `intel64` target:
 
 ```
-cd <sample_dir>/cpp/mpi 
+cd <sample_dir>/cpp/mpi
 
 make  libintel64 sample=svd_fast_distributed_mpi mode=run
 ```
@@ -83,7 +83,7 @@ The `make` command builds a static library for the Intel(R) 64 architecture and 
 
 Performance varies by use, configuration and other factors. Learn more at www.Intel.com/PerformanceIndex​.  
 
-No product or component can be absolutely secure. 
+No product or component can be absolutely secure.
 
 Your costs and results may vary.
 

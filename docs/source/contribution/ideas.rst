@@ -17,15 +17,15 @@ Ideas for contributions
 
 As an open-source project, we welcome community contributions to oneDAL.
 This document suggests contribution directions which we consider good introductory projects with meaningful
-impact. You can directly contribute to next-generation supercomputing, or just learn in depth about key 
-aspects of performant machine learning code for a range of architectures. This list is expected to evolve 
+impact. You can directly contribute to next-generation supercomputing, or just learn in depth about key
+aspects of performant machine learning code for a range of architectures. This list is expected to evolve
 with current available projects described in the latest version of the documentation.
 
-Every project is labeled in one of three tiers based on the time commitment: 'small' (90 hours), 'medium' 
-(175 hours) or 'large' (350 hours). Related topics can be combined into larger packages, though not 
-completely additive due to similarity in scope (e.g. 3 'smalls' may make a 'medium' given a learning 
-curve). Others may increase in difficulty as the scope increases (some 'smalls' may become large with 
-in-depth C++ coding). Each idea has a description, a difficulty, and possibly an 
+Every project is labeled in one of three tiers based on the time commitment: 'small' (90 hours), 'medium'
+(175 hours) or 'large' (350 hours). Related topics can be combined into larger packages, though not
+completely additive due to similarity in scope (e.g. 3 'smalls' may make a 'medium' given a learning
+curve). Others may increase in difficulty as the scope increases (some 'smalls' may become large with
+in-depth C++ coding). Each idea has a description, a difficulty, and possibly an
 extended goal. They are grouped into relative similarity to allow for easy combinations.
 
 Partial eigendecompositions for rank-deficient matrices (medium)
@@ -54,7 +54,7 @@ This would require keeping track of the number of rows in :math:`\mathbf{X}` tha
 which should be modified accordingly.
 
 Algorithms that might perform eigendecompositions on rank-deficient matrices include:
-    
+
     - Linear models.
     - PCA.
     - Precision calculation in covariance.

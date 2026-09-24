@@ -113,7 +113,7 @@ dal_example_suite(
 ### Data Loading Evolution
 ```cpp
 // DAAL: Explicit data source management
-FileDataSource<CSVFeatureManager> dataSource(fileName, 
+FileDataSource<CSVFeatureManager> dataSource(fileName,
                                              DataSource::doAllocateNumericTable,
                                              DataSource::doDictionaryFromContext);
 dataSource.loadDataBlock();

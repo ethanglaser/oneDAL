@@ -105,8 +105,8 @@ struct cluster_work_ptrs {
 /// @tparam Float Floating-point type
 ///
 /// @param[in]  queue  The SYCL queue
-/// @param[in]  data   Input matrix of size `n × d`
-/// @param[out] dist   Output matrix of size `n × n` (row-major)
+/// @param[in]  data   Input matrix of size `n x d`
+/// @param[out] dist   Output matrix of size `n x n` (row-major)
 /// @param[in]  metric Distance metric tag (`distance_metric`)
 /// @param[in]  degree Minkowski degree (used only when `metric == minkowski`)
 /// @param[in]  deps   Events that must complete before submission
@@ -147,7 +147,7 @@ inline sycl::event compute_distance_matrix(sycl::queue& queue,
             pr::chebyshev_distance<Float> dist_op(queue);
             return dist_op(data, data, dist, deps);
         }
-        default: { // euclidean — compute squared L2 (sqrt applied later)
+        default: { // euclidean - compute squared L2 (sqrt applied later)
             pr::squared_l2_distance<Float> dist_op(queue);
             return dist_op(data, data, dist, deps);
         }
@@ -159,12 +159,12 @@ inline sycl::event compute_distance_matrix(sycl::queue& queue,
 /// Runs `pr::kselect_by_rows` on the precomputed distance matrix to extract
 /// the k smallest values per row, then takes element `k - 1` (the k-th
 /// smallest) into `core_distances`. For `euclidean`, the input matrix holds
-/// squared L2 values so a `sqrt(max(·, 0))` is applied during the extraction.
+/// squared L2 values so a `sqrt(max(value, 0))` is applied during the extraction.
 ///
 /// @tparam Float Floating-point type
 ///
 /// @param[in]  queue          The SYCL queue
-/// @param[in]  dist           Pairwise distance matrix of size `n × n`
+/// @param[in]  dist           Pairwise distance matrix of size `n x n`
 /// @param[out] core_distances Per-point core distances, length `n`
 /// @param[in]  min_samples    `k` used for the k-NN core-distance definition
 /// @param[in]  row_count      Number of rows `n`
@@ -229,7 +229,7 @@ inline sycl::event compute_core_distances(sycl::queue& queue,
 /// Each entry becomes `MRD(i, j) = max(core_i, core_j, dist(i, j) / alpha)`.
 /// Per the canonical HDBSCAN robust single-linkage definition, alpha scales
 /// only the pairwise dist term inside the `max`, not the core distances. For
-/// `euclidean`, the input matrix holds squared L2 values so a `sqrt(max(·, 0))`
+/// `euclidean`, the input matrix holds squared L2 values so a `sqrt(max(value, 0))`
 /// is applied per entry before the alpha scale and the `max`. For other
 /// metrics the values are already final distances.
 ///
@@ -237,7 +237,7 @@ inline sycl::event compute_core_distances(sycl::queue& queue,
 ///
 /// @param[in]     queue          The SYCL queue
 /// @param[in]     core_distances Per-point core distances, length `n` (unscaled)
-/// @param[in,out] mrd_matrix     Distance matrix `n × n`, overwritten with MRD values
+/// @param[in,out] mrd_matrix     Distance matrix `n x n`, overwritten with MRD values
 /// @param[in]     metric         Distance metric tag (controls the sqrt finalize)
 /// @param[in]     alpha          Robust single-linkage scaling factor; applied
 ///                               only to dist(i,j) inside MRD
@@ -291,7 +291,7 @@ inline sycl::event compute_mrd_matrix(sycl::queue& queue,
 /// @tparam Float Floating-point type
 ///
 /// @param[in]  queue           The SYCL queue
-/// @param[in]  mrd_ptr         Precomputed MRD matrix of size `n × n`
+/// @param[in]  mrd_ptr         Precomputed MRD matrix of size `n x n`
 /// @param[in]  comp_ptr        Per-point component id, length `n`
 /// @param[out] pt_best_mrd_ptr Per-point best MRD, length `n`
 /// @param[out] pt_best_idx_ptr Per-point best different-component column index, length `n`
@@ -329,10 +329,10 @@ inline sycl::event boruvka_find_nearest_mrd(sycl::queue& queue,
 
 /// Find the nearest different-component neighbor per point with on-the-fly distance computation.
 ///
-/// Same as `boruvka_find_nearest_mrd` but does not require an `n × n` MRD
+/// Same as `boruvka_find_nearest_mrd` but does not require an `n x n` MRD
 /// matrix in memory: each work-item computes the distance to every other
 /// point on the fly using the requested metric. Used by the kd-tree and
-/// ball-tree GPU backends to avoid the `O(n²)` storage of a precomputed
+/// ball-tree GPU backends to avoid the `O(n^2)` storage of a precomputed
 /// matrix.
 ///
 /// `MRD(i, j) = max(core_i, core_j, dist(i, j) * inv_alpha)` per the
@@ -342,7 +342,7 @@ inline sycl::event boruvka_find_nearest_mrd(sycl::queue& queue,
 /// @tparam Float Floating-point type
 ///
 /// @param[in]  queue           The SYCL queue
-/// @param[in]  data_ptr        Row-major input buffer, size `n × col_count`
+/// @param[in]  data_ptr        Row-major input buffer, size `n x col_count`
 /// @param[in]  col_count       Number of features
 /// @param[in]  core_ptr        Per-point core distances, length `n` (unscaled)
 /// @param[in]  comp_ptr        Per-point component id, length `n`
@@ -427,7 +427,7 @@ inline sycl::event boruvka_find_nearest_otf(sycl::queue& queue,
 /// Reduce per-point bests to per-component bests, then merge via union-find.
 ///
 /// Runs as a single SYCL task because the union-find step has serial data
-/// dependencies, but every array involved is `O(n)` (not the `O(n²)` distance
+/// dependencies, but every array involved is `O(n)` (not the `O(n^2)` distance
 /// matrix), so single-task is acceptable. Appends accepted edges to
 /// `mst_from_ptr` / `mst_to_ptr` / `mst_weight_ptr` and decrements
 /// `num_comp_ptr` accordingly.
@@ -572,12 +572,12 @@ inline sycl::event boruvka_compress_components(sycl::queue& queue,
 /// component counter drops to 1.
 ///
 /// Used by the brute-force GPU backend; the kd-tree and ball-tree backends
-/// use `build_mst_otf` to avoid the `O(n²)` MRD storage.
+/// use `build_mst_otf` to avoid the `O(n^2)` MRD storage.
 ///
 /// @tparam Float Floating-point type
 ///
 /// @param[in]  queue       The SYCL queue
-/// @param[in]  mrd_matrix  Precomputed MRD matrix of size `n × n`
+/// @param[in]  mrd_matrix  Precomputed MRD matrix of size `n x n`
 /// @param[out] mst_from    Output MST `from` endpoints, length `n - 1`
 /// @param[out] mst_to      Output MST `to` endpoints, length `n - 1`
 /// @param[out] mst_weights Output MST weights, length `n - 1`
@@ -657,7 +657,7 @@ inline sycl::event build_mst(sycl::queue& queue,
                                                           { last_event });
         find_event.wait_and_throw();
 
-        // Step B: reduce + merge (single_task — O(N) work)
+        // Step B: reduce + merge (single_task - O(N) work)
         auto merge_event = boruvka_merge_components<Float>(queue,
                                                            comp_ptr,
                                                            uf_parent_ptr,
@@ -698,14 +698,14 @@ inline sycl::event build_mst(sycl::queue& queue,
 /// Build the MST under MRD on the GPU with on-the-fly distance computation.
 ///
 /// Same Boruvka loop as `build_mst`, but the find phase uses
-/// `boruvka_find_nearest_otf` so no `n × n` MRD matrix is required. Used by
+/// `boruvka_find_nearest_otf` so no `n x n` MRD matrix is required. Used by
 /// the kd-tree and ball-tree GPU backends where the matrix would be the
 /// dominant memory cost.
 ///
 /// @tparam Float Floating-point type
 ///
 /// @param[in]  queue          The SYCL queue
-/// @param[in]  data           Row-major input buffer of size `n × col_count`
+/// @param[in]  data           Row-major input buffer of size `n x col_count`
 /// @param[in]  core_distances Per-point core distances, length `n`
 /// @param[out] mst_from       Output MST `from` endpoints, length `n - 1`
 /// @param[out] mst_to         Output MST `to` endpoints, length `n - 1`
@@ -1311,7 +1311,7 @@ inline sycl::event eom_select_clusters_kernel(sycl::queue& queue,
 ///
 /// Phase 5 (parallel_for over points): for each point, either follow
 /// `point_fell_from` to its drop cluster and walk up the cluster tree until
-/// hitting a selected ancestor, or — for points never ejected — walk up the
+/// hitting a selected ancestor, or - for points never ejected - walk up the
 /// dendrogram via `dp_ptr` until a node with a known cluster id is found and
 /// then walk up the cluster tree.
 ///
@@ -1356,7 +1356,7 @@ inline sycl::event assign_label_kernels(sycl::queue& queue,
             const std::int32_t root_cid = static_cast<std::int32_t>(w.row_count);
             w.resp_ptr[i] = -1;
 
-            // Case 1: Point fell out of a cluster — walk up to deepest selected ancestor.
+            // Case 1: Point fell out of a cluster - walk up to deepest selected ancestor.
             const std::int32_t fell = w.pff_ptr[i];
             if (fell >= 0) {
                 std::int32_t c = fell;
@@ -1370,7 +1370,7 @@ inline sycl::event assign_label_kernels(sycl::queue& queue,
                 return;
             }
 
-            // Case 2: Point was never ejected — walk up dendrogram tree
+            // Case 2: Point was never ejected - walk up dendrogram tree
             std::int32_t nid = static_cast<std::int32_t>(i);
             while (nid >= 0 && nid < static_cast<std::int32_t>(w.total_nodes)) {
                 const std::int32_t cid = w.dtc_ptr[nid];
@@ -1440,7 +1440,7 @@ inline sycl::event extract_clusters(sycl::queue& queue,
     // Worst-case condensed-tree edges: up to 2*(nClusters-1) cluster->cluster
     // edges (each non-root cluster is created by a real split) plus up to
     // `row_count` fallen-leaf edges (every original point falls at most once).
-    // With nClusters ≤ row_count, the bound is `3*row_count - 2`.
+    // With nClusters <= row_count, the bound is `3*row_count - 2`.
     const std::int64_t max_condensed = 3 * row_count;
     const std::int64_t max_clusters = total_nodes;
 

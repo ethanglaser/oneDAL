@@ -505,4 +505,3 @@ Distributed computational mode terms
         A particular library providing collective operations.
 
         **Examples:** oneCCL, oneMPI
-

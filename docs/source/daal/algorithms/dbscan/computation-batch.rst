@@ -130,4 +130,3 @@ For more details, see :ref:`algorithms`.
     By default, this result is an object of the ``HomogenNumericTable`` class,
     but you can define the result as an object of any class derived from ``NumericTable``
     except ``CSRNumericTable``.
-

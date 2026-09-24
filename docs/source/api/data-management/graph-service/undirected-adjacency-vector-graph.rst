@@ -34,4 +34,3 @@ This section describes graph service functions for :ref:`api_undirected_adjacenc
     - Get the degree for the specified vertex
   * - :txtref:`get_vertex_neighbors <api_get_vertex_neighbors>`
     - Get the range of the vertex neighbors for the specified vertex
-

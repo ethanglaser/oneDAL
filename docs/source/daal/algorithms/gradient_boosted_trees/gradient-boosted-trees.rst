@@ -210,4 +210,3 @@ has the following parameters:
    * - ``minBinSize``
      - :math:`5`
      - Used with inexact split method only. Minimal number of observations in a bin.
-

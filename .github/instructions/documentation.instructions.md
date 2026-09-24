@@ -18,16 +18,16 @@ oneDAL uses a multi-format documentation system:
 ```cpp
 /**
  * @brief K-means clustering algorithm implementation
- * 
+ *
  * @tparam Float Floating-point type for computations
  * @tparam Method Algorithm method (lloyd_dense, lloyd_csr)
- * 
+ *
  * @par Example
  * @code
  * auto desc = kmeans::descriptor<float>().set_cluster_count(10);
  * auto result = train(desc, data);
  * @endcode
- * 
+ *
  * @par Thread Safety
  * This class is not thread-safe.
  */
@@ -50,10 +50,10 @@ public:
  * @param[in] desc Algorithm descriptor with parameters
  * @param[in] data Input data table
  * @return Training result containing the trained model
- * 
+ *
  * @par Exception Safety
  * Strong exception guarantee - if an exception is thrown, the program state remains unchanged.
- * 
+ *
  * @par Thread Safety
  * This function is not thread-safe.
  */

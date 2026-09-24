@@ -109,4 +109,4 @@ Developers can leverage the CI scripts locally:
 ```
 
 ### Internal CI
-Internal CI integration done in separate repository, though checks are enforced in PRs. 
+Internal CI integration done in separate repository, though checks are enforced in PRs.

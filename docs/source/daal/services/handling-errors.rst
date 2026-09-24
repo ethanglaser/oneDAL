@@ -84,4 +84,3 @@ C++:
 -  :cpp_example:`error_handling/error_handling_throw.cpp`
 
 .. Python*: error_handling_throw.py
-

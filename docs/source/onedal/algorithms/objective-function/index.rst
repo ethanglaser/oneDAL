@@ -84,6 +84,3 @@ Currently algorithm does not support distributed execution in SMPD mode.
 .. rubric:: Examples: Logistic Loss
 
 .. include::  ../../../includes/objective-function/logloss-examples.rst
-
-
-

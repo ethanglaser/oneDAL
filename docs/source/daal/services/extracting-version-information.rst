@@ -49,4 +49,3 @@ Examples
 C++: :cpp_example:`services/library_version_info.cpp`
 
 .. Python*: library_version_info.py
-

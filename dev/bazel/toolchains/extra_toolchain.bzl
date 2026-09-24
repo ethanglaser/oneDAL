@@ -53,4 +53,3 @@ def _onedal_extra_toolchain_impl(repo_ctx):
 onedal_extra_toolchain = repository_rule(
     implementation = _onedal_extra_toolchain_impl,
 )
-

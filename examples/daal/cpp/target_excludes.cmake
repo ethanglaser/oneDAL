@@ -74,4 +74,3 @@ elseif((CMAKE_SYSTEM_PROCESSOR STREQUAL "riscv64") AND
         "pivoted_qr_dense_batch"
     )
 endif()
-

@@ -467,4 +467,3 @@ algorithm at the initialization and computation stages:
 -  If input data is non-homogeneous, use AOS layout rather than SOA layout.
 
 .. include:: ../../../opt-notice.rst
-

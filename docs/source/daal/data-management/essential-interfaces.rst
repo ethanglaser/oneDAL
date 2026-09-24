@@ -108,5 +108,3 @@ statistics are computed for each numeric table:
 **Special Interfaces for the MergedNumericTable Class**
 
 - To add a new array to the object of the MergedNumericTable class, use the ``addNumericTable()`` method.
-
-

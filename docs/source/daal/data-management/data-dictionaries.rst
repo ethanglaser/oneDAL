@@ -55,4 +55,3 @@ C++:
 -  :cpp_example:`datasource/datastructures_aos.cpp`
 -  :cpp_example:`datasource/datastructures_soa.cpp`
 -  :cpp_example:`datasource/datastructures_homogen.cpp`
-

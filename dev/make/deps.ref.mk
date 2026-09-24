@@ -49,7 +49,7 @@ RELEASEDIR.open_blas.soia  := $(if $(OS_is_win),$(RELEASEDIR.open_blas)/bin/vc_m
 # List of OpenBLAS libraries to exclude from linking.
 # This list is used to generate the `--exclude-libs` linker options.
 # If you need to exclude additional libraries, extend this list by appending the library names.
-MATH_LIBS_TO_EXCLUDE := $(plib)openblas.$a 
+MATH_LIBS_TO_EXCLUDE := $(plib)openblas.$a
 
 ifeq ($(RNG_OPENRNG), yes)
 	OPENRNGDIR:= $(if $(wildcard $(DIR)/__deps/openrng/*),$(DIR)/__deps/openrng,                            \

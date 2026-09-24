@@ -29,4 +29,3 @@ SET(CMAKE_C_COMPILER_TARGET riscv64-linux-gnu)
 
 find_program(CMAKE_CXX_COMPILER NAMES clang++)
 SET(CMAKE_CXX_COMPILER_TARGET riscv64-linux-gnu)
-

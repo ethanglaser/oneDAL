@@ -297,7 +297,7 @@ inline ndarray<Type, 1> table2ndarray_1d(sycl::queue& q,
 }
 
 /// Flatten a table into a 1D ndarray preserving the raw storage order.
-/// No transpose is performed — the element order depends on the table's
+/// No transpose is performed - the element order depends on the table's
 /// data layout (row-major yields row-wise, column-major yields column-wise).
 /// This is suitable for element-wise operations (e.g. finiteness checks)
 /// where traversal order does not matter.

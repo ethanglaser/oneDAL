@@ -90,7 +90,7 @@ outputs:
       skip: true  # [cxx_compiler != "dpcpp" or not linux64]
       # Do NOT set ignore_run_exports_from here: dpcpp_impl_linux-64 declares
       # run_exports with a compatible intel-sycl-rt pin.  dal-gpu inherits it
-      # automatically — no manual pin needed.
+      # automatically - no manual pin needed.
     script: pack.sh  # [linux]
     requirements:
       run:

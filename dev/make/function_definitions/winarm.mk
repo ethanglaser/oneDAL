@@ -35,4 +35,3 @@ define set_daal_rt_deps
           $$(if $$(CHECK_DLL_SIG),Wintrust.lib))
   $$(eval daaldep.win.threxport.create = grep -v -E '^(;|$$$$$$$$)' $$$$< $$$$(USECPUS.out.grep.filter))
 endef
-

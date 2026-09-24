@@ -25,7 +25,7 @@ name: Nightly-test
 #      `source_run_id`. The test jobs will download artifacts from that build
 #      and run against the workflow definition on the dispatched branch.
 # Post the dispatch run URL as a comment on the PR for reviewers.
-# The CVE scan is intentionally skipped on dispatch — it uploads SARIF to
+# The CVE scan is intentionally skipped on dispatch - it uploads SARIF to
 # the Security tab and must only run on genuine Nightly-build completions.
 #
 # The jobs that check out the tested commit hold read-only permissions, check out
@@ -40,7 +40,7 @@ name: Nightly-test
 # main's cache. Read-only `permissions`, `persist-credentials: false` and the
 # absence of any cache action do not take that token away, and it is all the
 # checked-out code needs to write an entry that main-scoped caches are read from
-# on every branch — `ci.yml`'s ABI check restores such an entry into pull
+# on every branch - `ci.yml`'s ABI check restores such an entry into pull
 # request jobs. Nothing in these jobs uses the cache or uploads an artifact, so
 # every step that runs checked-out code blanks those variables. The artifact
 # downloads keep them because they run pinned actions, not repository code.
@@ -78,7 +78,7 @@ jobs:
   cve-bin-tool-scan:
     runs-on: ubuntu-26.04
     # Only scan artifacts from schedule or manual Nightly-build runs. Do not scan PR-originated
-    # runs or workflow_dispatch verification runs — SARIF uploads must come from real nightlies.
+    # runs or workflow_dispatch verification runs - SARIF uploads must come from real nightlies.
     if: >
       ${{ github.repository == 'uxlfoundation/oneDAL'
           && github.event_name == 'workflow_run'
@@ -131,7 +131,7 @@ jobs:
       # appear as their own lines on the PR's Checks list, even though
       # workflow_run triggers do not otherwise surface on the PR. On
       # workflow_dispatch, bind to github.sha (HEAD of the dispatched ref); the
-      # platform sets this — never take head_sha from a caller-supplied input.
+      # platform sets this - never take head_sha from a caller-supplied input.
       - name: Report check runs (start)
         id: create
         uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
@@ -186,7 +186,7 @@ jobs:
           persist-credentials: false
           # checkout refuses fork code under workflow_run unless this is set,
           # because such a job normally carries the base repository's write
-          # scopes, secrets and default-branch cache — the "pwn request" shape.
+          # scopes, secrets and default-branch cache - the "pwn request" shape.
           # None of that is present here: the permissions block above grants
           # read only, the job references no secrets, `persist-credentials:
           # false` above keeps the token off disk, and the steps that run this

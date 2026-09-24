@@ -22,4 +22,3 @@ Types of Numeric Tables
 .. include:: ./numeric-tables/csr-numeric-table.rst
 
 .. include:: ./numeric-tables/merged-numeric-table.rst
-

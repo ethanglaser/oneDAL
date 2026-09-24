@@ -25,7 +25,7 @@ on:
     branches:
       - main
       - 'feature/**'
-  
+
 env:
   DEP_DIR: ${{ github.workspace }}/__deps
   TBB_VERSION: v2023.1.0
@@ -64,18 +64,18 @@ jobs:
           Invoke-WebRequest https://github.com/llvm/llvm-project/releases/download/llvmorg-${{ env.LLVM_VERSION }}/LLVM-${{ env.LLVM_VERSION }}-${{ matrix.os.llvm_arch }}.exe -UseBasicParsing -OutFile LLVM-${{ matrix.os.llvm_arch }}.exe
           Start-Process -FilePath ".\LLVM-${{ matrix.os.llvm_arch }}.exe" -ArgumentList "/S" -Wait
           echo "%ProgramFiles%\LLVM\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          
+
       - name: Install CMake and Ninja for Win-${{ matrix.os.arch }}
         shell: pwsh
         run: |
           Invoke-WebRequest https://github.com/Kitware/CMake/releases/download/v${{ env.CMAKE_VERSION }}/cmake-${{ env.CMAKE_VERSION }}-windows-${{ matrix.os.arch }}.msi -OutFile cmake-${{ matrix.os.arch }}.msi
           Start-Process msiexec.exe -ArgumentList "/i cmake-${{ matrix.os.arch }}.msi /quiet /norestart" -Wait
           echo "%ProgramFiles%\CMake\bin" >> $env:GITHUB_PATH
-          
+
           Invoke-WebRequest https://github.com/ninja-build/ninja/releases/download/v${{ env.NINJA_VERSION }}/ninja-win${{ matrix.os.arch }}.zip -OutFile ninja-win${{ matrix.os.arch }}.zip
           Expand-Archive ninja-win${{ matrix.os.arch }}.zip -DestinationPath ninja
           Copy-Item ninja\ninja.exe -Destination "C:\Windows\System32"
-          
+
       - name: Build OpenBLAS
         shell: cmd
         run: |
@@ -119,5 +119,3 @@ jobs:
           set PATH=%ProgramFiles%\LLVM\bin;%PATH%
           set "CMAKE_GENERATOR=Visual Studio 18 2026"
           .ci\scripts\test.bat oneapi\cpp "" ${{ matrix.os.cxx }} cmake
-
-

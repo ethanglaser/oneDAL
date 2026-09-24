@@ -271,4 +271,3 @@ Examples
     - :daal4py_example:`decision_forest_classification_default_dense.py`
     - :daal4py_example:`decision_forest_classification_hist.py`
     - :daal4py_example:`decision_forest_classification_traverse.py`
-

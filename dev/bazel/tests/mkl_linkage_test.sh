@@ -73,7 +73,7 @@ if [ ! -f "$DYNAMIC_LIB" ]; then
 fi
 
 # Dynamic lib must NOT export MKL symbols (they must be hidden).
-# Use --defined-only to exclude undefined (U) imports — only defined exports matter.
+# Use --defined-only to exclude undefined (U) imports - only defined exports matter.
 MKL_EXPORTED=$(nm -D --defined-only "$DYNAMIC_LIB" 2>/dev/null | grep -c ' mkl_' || true)
 check "Dynamic lib: no exported MKL symbols (symbols hidden via --exclude-libs)" "$MKL_EXPORTED"
 

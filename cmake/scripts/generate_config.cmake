@@ -24,7 +24,7 @@ set(ARCH_DIR_ONEDAL "${ARCH_DIR_ONEDAL}")
 
 # Parse version info if possible
 if (NOT "$ENV{DALROOT}" STREQUAL "")
-    # version_info.h is set according to the relevant package structure 
+    # version_info.h is set according to the relevant package structure
     set(version_info.h $ENV{DALROOT}/include/services/library_version_info.h)
     if (NOT EXISTS "${version_info.h}")
         set(version_info.h $ENV{DALROOT}/include/dal/services/library_version_info.h)

@@ -22,4 +22,3 @@ C++ API
    data-management/index.rst
    algorithms/index.rst
    spmd/index.rst
-

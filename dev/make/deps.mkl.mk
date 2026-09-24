@@ -33,7 +33,7 @@ daaldep.math_backend.incdir := $(MKLDIR.include)
 daaldep.math_backend_oneapi.incdir := $(MKLDIR.include) $(MKLGPUDIR.include)
 
 daaldep.lnx32e.mkl.thr := $(MKLDIR.libia)/$(plib)mkl_tbb_thread.$a
-daaldep.lnx32e.mkl.core := $(MKLDIR.libia)/$(plib)mkl_core.$a 
+daaldep.lnx32e.mkl.core := $(MKLDIR.libia)/$(plib)mkl_core.$a
 daaldep.lnx32e.mkl.interfaces := $(MKLDIR.libia)/$(plib)mkl_intel_ilp64.$a
 daaldep.lnx32e.mkl.sycl_thr := $(MKLDIR.libia)/$(plib)mkl_gnu_thread.$(so)
 daaldep.lnx32e.mkl.sycl_core := $(MKLDIR.libia)/$(plib)mkl_core.$(so)
@@ -84,7 +84,7 @@ daaldep.ipp     := $(daaldep.$(PLAT).ipp)
 
 # For the MKL-based math backend, we don't link MKL statically into libonedal_core library
 # The user must provide MKL static libraries when building their application.
-daaldep.math_backend.static_link_deps := 
+daaldep.math_backend.static_link_deps :=
 # Static MKL libraries linked into the shared oneDAL library.
 daaldep.math_backend.shared_link_deps := $(daaldep.ipp) $(daaldep.vml) $(daaldep.math_backend.interfaces) $(daaldep.math_backend.thr) $(daaldep.math_backend.core)
 # Dynamic MKL libraries(SYCL) linked into the shared oneDAL(SYCL) library.

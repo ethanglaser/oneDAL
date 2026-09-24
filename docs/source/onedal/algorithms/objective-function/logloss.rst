@@ -78,4 +78,3 @@ Distributed mode
 ----------------
 
 Currently algorithm does not support distributed execution in SMPD mode.
-

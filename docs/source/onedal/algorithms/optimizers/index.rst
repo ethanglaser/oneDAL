@@ -59,4 +59,3 @@ Programming Interface
 ---------------------
 
 Refer to :ref:`API Reference: Newton-CG optimizer <api_newton_cg>`.
-

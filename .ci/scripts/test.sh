@@ -197,7 +197,7 @@ fi
 
 interface=${interface:-daal/cpp}
 if [[ "${interface}" == "oneapi/dpc" ]]; then
-    echo "Interface oneapi/dpc detected — forcing dynamic linking only"
+    echo "Interface oneapi/dpc detected - forcing dynamic linking only"
     link_modes=(dynamic)
 fi
 

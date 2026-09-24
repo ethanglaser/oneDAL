@@ -12,4 +12,3 @@ daal_module(
         "@onedal//cpp/daal/src/algorithms/dtrees/forest:kernel",
     ],
 )
-

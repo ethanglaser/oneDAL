@@ -224,4 +224,3 @@ C++:
 
 - :cpp_example:`datasource/datastructures_merged.cpp`
 - :cpp_example:`datasource/datastructures_homogen.cpp`
-

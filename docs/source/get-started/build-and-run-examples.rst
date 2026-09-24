@@ -63,7 +63,7 @@ basic usage scenarios of |short_name| with DPCPP. Go to
 
       .. group-tab:: Windows
 
-         To set up |short_name| environment, run ``call /env/vars.bat`` or ``call setvars.bat``. 
+         To set up |short_name| environment, run ``call /env/vars.bat`` or ``call setvars.bat``.
 
 #. Copy ``./examples/oneapi/dpc`` to a writable directory if necessary (since it creates temporary files):
 
@@ -141,4 +141,3 @@ basic usage scenarios of |short_name| with DPCPP. Go to
 
 
    You can build traditional C++ examples located in ``examples/oneapi/cpp`` folder in a similar way.
-

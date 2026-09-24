@@ -172,28 +172,28 @@ mkl_repo(
         # Header files for classic MKL (C/C++) interface(mkl_include_)
         # Contains "mkl.h" and related headers, not using oneAPI directory structure
         "https://files.pythonhosted.org/packages/11/58/6f583b3bac7d3952a89a00ab34e61baa17f6d6de3454a8005958289bef22/mkl_include-2025.2.0-py2.py3-none-manylinux_2_28_x86_64.whl",
-        
+
         # oneMKL SYCL C++ headers (DPC++/SYCL interface)
         # Provides headers for SYCL-based oneAPI MKL development (e.g., onemkl/*.hpp)
         "https://files.pythonhosted.org/packages/67/60/183badc2d807be1abb95a20315e84a2075cb44a1d1ede104d42cb1ed3092/onemkl_sycl_include-2025.2.0-py2.py3-none-manylinux_2_28_x86_64.whl",
-        
+
         # oneMKL SYCL - BLAS domain
         # Provides libmkl_sycl_blas.so.5 with SYCL-enabled BLAS (e.g., GEMM, AXPY)
         "https://anaconda.org/conda-forge/onemkl-sycl-blas/2025.2.0/download/linux-64/onemkl-sycl-blas-2025.2.0-haf5e11a_628.conda",
-        
+
         # oneMKL SYCL - LAPACK domain
         # Provides libmkl_sycl_lapack.so.5 for linear algebra (e.g., LU, QR, eigenvalues)
         "https://anaconda.org/conda-forge/onemkl-sycl-lapack/2025.2.0/download/linux-64/onemkl-sycl-lapack-2025.2.0-haf5e11a_628.conda",
-        
+
         # oneMKL SYCL - Sparse domain
         # Provides libmkl_sycl_sparse.so.5 for sparse matrix operations and solvers
         "https://anaconda.org/conda-forge/onemkl-sycl-sparse/2025.2.0/download/linux-64/onemkl-sycl-sparse-2025.2.0-haf5e11a_628.conda",
-        
+
         # oneMKL SYCL - Random Number Generator (RNG)
         # Provides libmkl_sycl_rng.so.5 for random number generation with SYCL
         "https://anaconda.org/conda-forge/onemkl-sycl-rng/2025.2.0/download/linux-64/onemkl-sycl-rng-2025.2.0-haf5e11a_628.conda",
 
-        # oneMKL devel core 
+        # oneMKL devel core
         # Provides libmkl_core.so.2 for correct SYCL execution
         "https://anaconda.org/conda-forge/mkl/2025.3.0/download/linux-64/mkl-2025.3.0-h0e700b2_463.conda",
     ],

@@ -207,7 +207,7 @@ else
         for d in "${bad_dirs[@]}"; do
             _fail "External headers leaked into release: $(basename "$d")"
         done
-        echo "  ℹ️  These directories should not be part of the oneDAL public include tree."
+        echo "  Note: These directories should not be part of the oneDAL public include tree."
         echo "     Fix: ensure headers_filter excludes external repos (short_path starts with '../')."
     fi
 

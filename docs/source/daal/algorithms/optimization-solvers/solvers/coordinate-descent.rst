@@ -117,4 +117,3 @@ Examples
   .. tab:: C++ (CPU)
 
     - :cpp_example:`cd_dense_batch.cpp <optimization_solvers/cd_dense_batch.cpp>`
-

@@ -46,4 +46,3 @@ Examples
 ********
 
 C++: :cpp_example:`serialization/serialization.cpp`
-

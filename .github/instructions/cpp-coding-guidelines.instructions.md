@@ -71,7 +71,7 @@ if (status != services::Status::OK) {
 namespace daal::algorithms::kmeans::init::internal {
 
 template <Method method, typename algorithmFPType, CpuType cpu>
-Status init(size_t p, size_t n, size_t nRowsTotal, size_t nClusters, 
+Status init(size_t p, size_t n, size_t nRowsTotal, size_t nClusters,
            algorithmFPType * clusters, NumericTable * ntData, unsigned int seed) {
     // Template implementation here
 }
@@ -111,9 +111,9 @@ class DataProcessor {
 private:
     std::unique_ptr<float[]> buffer_;
     std::shared_ptr<homogen_table> table_;
-    
+
 public:
-    DataProcessor(size_t size) 
+    DataProcessor(size_t size)
         : buffer_(std::make_unique<float[]>(size))
         , table_(std::make_shared<homogen_table>(buffer_.get(), rows, cols))
     { }
@@ -159,10 +159,10 @@ throw unimplemented{ dal::detail::error_messages::unsupported_data_layout() };
 
 Based on actual codebase analysis:
 
-- **File Names**: 
+- **File Names**:
   - DAAL: Lowercase with underscores: `kmeans_batch.h`, `homogen_numeric_table.h`
   - oneAPI: Lowercase with underscores: `train.hpp`, `compute_kernel.hpp`
-- **Classes/Structs**: 
+- **Classes/Structs**:
   - DAAL: `BatchContainer`, `HomogenNumericTable`, `KMeansBatch`
   - oneAPI: `train_ops`, `compute_kernel`, `uniform_voting`
 - **Functions**: Descriptive verb-noun: `compute()`, `get_data()`, `wait_and_throw()`
@@ -183,7 +183,7 @@ template<typename T>
 auto process_data(const std::vector<T>& input) -> std::vector<T> {
     std::vector<T> output;
     output.reserve(input.size());
-    
+
     for (const auto& value : input) {
         output.push_back(process_value(value));
     }
@@ -215,7 +215,7 @@ class DAAL_EXPORT HomogenNumericTable : public NumericTable
 - **Readability**: Code should be self-documenting and easy to understand
 - **Indentation**: Use 4 spaces (not tabs)
 - **File Endings**: Always put an empty line at the end of files
-- **Include Guards**: 
+- **Include Guards**:
   - oneAPI: Use `#pragma once`
   - DAAL: Traditional guards (`#ifndef __FILENAME_H__`)
 
@@ -227,11 +227,11 @@ public:
     // Public interface first
     services::Status compute();
     Result getResult() const;
-    
+
 protected:
     // Protected members
     virtual void initialize();
-    
+
 private:
     // Private implementation and data
     DataTable data_;
@@ -245,11 +245,11 @@ private:
 class DataManager {
 public:
     DataManager(std::vector<float> data) : data_(std::move(data)) {}
-    
+
     auto get_data() && -> std::vector<float> {
         return std::move(data_);
     }
-    
+
 private:
     std::vector<float> data_;
 };
